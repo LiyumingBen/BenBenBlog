@@ -14,7 +14,7 @@ cd public
 
 git init
 git add -A
-git commit -m 'depoly脚本更新'
+git commit -m '去掉多余文件'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f https://github.com/LiyumingBen/LiyumingBen.github.io.git master
