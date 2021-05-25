@@ -8,7 +8,7 @@ const searchThirdparty = require('./themeConfig/searchThirdparty.js');
 // 主题配置
 module.exports = {
   author: "Ben",
-  authorAvatar: "https://avatars.githubusercontent.com/u/17562019?s=400&u=70cae2720ca2798c3076a620623b5d65b056fd19&v=4",
+  authorAvatar: "https://pic1.58cdn.com.cn/nowater/fangfe/n_v291c36487fef1413eb9f62fc789eba2c6.jpg",
   slogan: '开到荼蘼',
   homeBlogCfg: {
     category: '文章分类',
@@ -19,7 +19,7 @@ module.exports = {
     friendLinkNum: 5
   },
   lastupdateNum: 3, // 最近更新文章数量
-  logo: "https://avatars.githubusercontent.com/u/17562019?s=400&u=70cae2720ca2798c3076a620623b5d65b056fd19&v=4",
+  logo: "https://pic1.58cdn.com.cn/nowater/fangfe/n_v291c36487fef1413eb9f62fc789eba2c6.jpg",
   type: "blog", // 已修改源码，默认就是博客
   search: true,
   searchMaxSuggestions: 100,

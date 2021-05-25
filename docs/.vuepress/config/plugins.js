@@ -14,9 +14,9 @@ module.exports = [
   [
     "dynamic-title",
     {
-      showIcon: "https://avatars.githubusercontent.com/u/17562019?s=400&u=70cae2720ca2798c3076a620623b5d65b056fd19&v=4",
+      showIcon: "https://pic1.58cdn.com.cn/nowater/fangfe/n_v291c36487fef1413eb9f62fc789eba2c6.jpg",
       showText: "(*╹▽╹*)欢迎回来：",
-      hideIcon: "https://avatars.githubusercontent.com/u/17562019?s=400&u=70cae2720ca2798c3076a620623b5d65b056fd19&v=4",
+      hideIcon: "https://pic1.58cdn.com.cn/nowater/fangfe/n_v291c36487fef1413eb9f62fc789eba2c6.jpg",
       hideText: "o(╥﹏╥)大哥人呢！",
       recoverTime: 2000
     }

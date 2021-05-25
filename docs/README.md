@@ -1,5 +1,5 @@
 ---
 home: true
 heroText: Ben的学习基地
-heroImage: https://avatars.githubusercontent.com/u/17562019?s=400&u=70cae2720ca2798c3076a620623b5d65b056fd19&v=4
+heroImage: https://pic1.58cdn.com.cn/nowater/fangfe/n_v291c36487fef1413eb9f62fc789eba2c6.jpg
 ---

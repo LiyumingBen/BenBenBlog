@@ -15,7 +15,7 @@
         <div class="tips">欢迎大哥👏🏻扫码加我：<b>Ben</b></div>
         <div class="qrcode">
           <img v-show="isWechat" :src="$withBase('/img/wechat.png')" alt="微信">
-          <img v-show="!isWechat" :src="$withBase('https://avatars.githubusercontent.com/u/17562019?s=400&u=70cae2720ca2798c3076a620623b5d65b056fd19&v=4')" alt="爱你">
+          <img v-show="!isWechat" :src="$withBase('https://pic1.58cdn.com.cn/nowater/fangfe/n_v291c36487fef1413eb9f62fc789eba2c6.jpg')" alt="爱你">
         </div>
         <div class="toggle-qrcode">
           <span class="toggle-1" :class="{'actived': isWechat}" @click="toggleQrcode(true)">微信</span>

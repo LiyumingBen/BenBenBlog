@@ -14,7 +14,7 @@ cd public
 
 git init
 git add -A
-git commit -m '修改日期'
+git commit -m '修改日期、友情链接'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f https://github.com/LiyumingBen/LiyumingBen.github.io.git master
