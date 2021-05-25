@@ -9,7 +9,7 @@ const searchThirdparty = require('./themeConfig/searchThirdparty.js');
 module.exports = {
   author: "Ben",
   authorAvatar: "https://avatars.githubusercontent.com/u/17562019?s=400&u=70cae2720ca2798c3076a620623b5d65b056fd19&v=4",
-  slogan: 'just do it',
+  slogan: '开到荼蘼',
   homeBlogCfg: {
     category: '文章分类',
     categoryNum: 10,
