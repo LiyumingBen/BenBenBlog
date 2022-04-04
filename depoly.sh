@@ -10,11 +10,11 @@ npm run build
 cd public
 
 # 如果是发布到自定义域名
-# echo 'www.example.com' > CNAME
+echo 'www.libertinelym.top' > CNAME
 
 git init
 git add -A
-git commit -m '修改日期、友情链接'
+git commit -m '修改域名'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f https://github.com/LiyumingBen/LiyumingBen.github.io.git master
