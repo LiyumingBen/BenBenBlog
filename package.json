@@ -5,7 +5,8 @@
   "author": "Ben",
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "publish": "bash depoly.sh"
   },
   "devDependencies": {
     "@vuepress-reco/vuepress-plugin-back-to-top": "^1.6.0",
