@@ -15,7 +15,7 @@ echo 'www.libertinelym.top' > CNAME
 git init
 git add -A
 # 每次发布修改这里的提交信息
-git commit -m '修改域名'
+git commit -m '前端规范'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f https://github.com/LiyumingBen/LiyumingBen.github.io.git master
