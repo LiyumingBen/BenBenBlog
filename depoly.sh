@@ -15,7 +15,7 @@ echo 'www.libertinelym.top' > CNAME
 git init
 git add -A
 # 每次发布修改这里的提交信息
-git commit -m '前端规范'
+git commit -m 'feat: 添加websocket分装、自定义指令v-watermark'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f https://github.com/LiyumingBen/LiyumingBen.github.io.git master

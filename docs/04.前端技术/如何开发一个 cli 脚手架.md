@@ -11,25 +11,25 @@ tags:
 # 如何开发一个脚手架工具
 
 ## 前言
+
 因为经常创建代码模板以便于二次开发，有时会将所写的模板上传到 git 仓库以便于下次直接使用。但是由于模板数量的不断增加，有时可能会无法快速找到所需要的模板仓库。最主要的是，每次都要去手动查找，太麻烦了！！并且现在主流的框架都搭配了一个相应的 cli 用于创建初始项目，于是打算模仿它们做一个属于自己的脚手架工具。
-
-
 
 ## 准备工作
 
 因为是使用`node.js`环境进行开发，所以会依赖一些第三方库：
+
 - **交互**
-  + [commander.js](https://github.com/tj/commander.js)：完整的 node.js 命令行解决方案，灵感来自 Ruby 的 commander。
-  + [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)：通用交互式命令行用户界面的集合。
-  + [clear](https://github.com/bahamas10/node-clear#readme)：清除终端，相当于直接在终端使用清除命令。
-  + [chalk](https://github.com/chalk/chalk)：为终端的字符串添加正确的颜色（自定义终端字体颜色）。
-  + [log-symbols](https://github.com/sindresorhus/log-symbols)：为打印日志添加的彩色符号（比如 √ 和 ×）。
-  + [figlet.js](https://github.com/patorjk/figlet.js)：一个用 JavaScript 编写的 FIG 驱动程序，能够生成基于`ASCII`的艺术字。
+  - [commander.js](https://github.com/tj/commander.js)：完整的 node.js 命令行解决方案，灵感来自 Ruby 的 commander。
+  - [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)：通用交互式命令行用户界面的集合。
+  - [clear](https://github.com/bahamas10/node-clear#readme)：清除终端，相当于直接在终端使用清除命令。
+  - [chalk](https://github.com/chalk/chalk)：为终端的字符串添加正确的颜色（自定义终端字体颜色）。
+  - [log-symbols](https://github.com/sindresorhus/log-symbols)：为打印日志添加的彩色符号（比如 √ 和 ×）。
+  - [figlet.js](https://github.com/patorjk/figlet.js)：一个用 JavaScript 编写的 FIG 驱动程序，能够生成基于`ASCII`的艺术字。
 - **创建模板**
-  + [download-git-repo](https://gitlab.com/flippidippi/download-git-repo)：基于`node.js`下载并提取 git 仓库（GitHub、GitLab、Bitbucket）。
-  + [handlebars.js](https://github.com/wycats/handlebars.js)：模板引擎，用于将与用于交互所得到的信息填入到模板文件中，比如对`package.json`的内容进行动态创建。
-  + [ora](https://github.com/sindresorhus/ora)：优雅的终端 spinner，可用于处理下载过程中的下载动画。
-  + [clui](https://github.com/nathanpeck/clui)（可选）：一个更加完善的终端图形库，内部也有包括 spinner 等组件。
+  - [download-git-repo](https://gitlab.com/flippidippi/download-git-repo)：基于`node.js`下载并提取 git 仓库（GitHub、GitLab、Bitbucket）。
+  - [handlebars.js](https://github.com/wycats/handlebars.js)：模板引擎，用于将与用于交互所得到的信息填入到模板文件中，比如对`package.json`的内容进行动态创建。
+  - [ora](https://github.com/sindresorhus/ora)：优雅的终端 spinner，可用于处理下载过程中的下载动画。
+  - [clui](https://github.com/nathanpeck/clui)（可选）：一个更加完善的终端图形库，内部也有包括 spinner 等组件。
 
 **注：**因为该文章只是做一个演示，所以暂时只会用到上面的部分库，对其他库有需求的同学可以下来自行了解。
 
@@ -38,8 +38,6 @@ npm install commander inquirer clear chalk log-symbols figlet download-git-repo 
 # or
 yarn add commander inquirer clear chalk log-symbols figlet download-git-repo handlebars ora
 ```
-
-
 
 ## 编码
 
@@ -54,6 +52,7 @@ cotpl create <project>
 ### 基本交互
 
 要实现命令行的基本交互只需要搭配`commander.js`和`Inquirer.js`使用就足够了。
+
 ```js
 // ./src/index.js
 // version
@@ -70,11 +69,11 @@ program.version(
 
 // 创建一个命令
 program
-		// 如何使用
+  // 如何使用
    .command('create <name>')
-		// 命令的描述
+  // 命令的描述
    .description('create a new project powered by cotpl-cli')
-	 // 运行结果
+  // 运行结果
    .action(async (name) => {
    // name 为上面创建项目时传的项目名
    if (fs.existsSync(name)) {
@@ -111,8 +110,6 @@ program.parse(process.argv);
 
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8377bb232bf941fbbe4f714485c956ae~tplv-k3u1fbpfcp-zoom-1.image)
 
-
-
 ### 交互优化
 
 - `log-symbols`、`chalk`对用户提供更加个性化的回复。
@@ -143,7 +140,7 @@ program
         chalk`{rgb(255,255,255) Target directory {rgb(130,223,226) ${process.cwd()}/${name}} already exists.}`
       )
     } else {
-			//...
+   //...
     }
   })
 
@@ -159,8 +156,6 @@ program.parse(process.argv)
 ```
 
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fea1d845664d48d9a2ddb22a8886e125~tplv-k3u1fbpfcp-zoom-1.image)
-
-
 
 ### 下载模板
 
@@ -308,8 +303,6 @@ program.parse(process.argv)
 
 ![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f15256dd6492499d89fce54cab19701d~tplv-k3u1fbpfcp-zoom-1.image)
 
-
-
 ### 渲染元信息
 
 通过上面的步骤我们已经完成了下载模板的功能，如果要修改项目信息可以直接进入到项目中进行修改，但是如果想让用户在创建项目的时候就输入一些信息并自动填入模板文件中，还需要借助模板引擎的帮助。
@@ -356,8 +349,8 @@ program
   .command('create <name>')
   .description('create a new project powered by cotpl-cli')
   .action(async (name) => {
-  			//...
-  			// 选择模板后马上填写项目描述
+     //...
+     // 选择模板后马上填写项目描述
         const { templateName, description } = await inquirer.prompt([
           {
             name: 'templateName',
@@ -386,8 +379,6 @@ program
 
 进行如上配置后就能在项目的`package.json`中看到修改后的信息了。
 
-
-
 ## 如何使用
 
 在前面我们完成了 cli 的所有编码工作，但是如果要像使用命令一样去使用该 cli，还需要修改一下项目配置。
@@ -404,8 +395,6 @@ program
 
 **如果为`package.json`添加了 bin 字段，对应的可执行文件就会被链接到当前项目的`./node_modules/.bin`中，在本地项目中就可以使用`npx cotpl`运行命令，如果是全局模块则可以直接使用该命令。**
 
-
-
 ### 2.为运行文件添加脚本解释程序
 
 在被指定的 bin 的运行文件中添加以下代码，这行代码的意思就是告诉系统动态的去环境变量中查找 node 来执行该文件。
@@ -415,22 +404,16 @@ program
 #!/usr/bin/env node
 ```
 
-
-
 ### 3.将命令添加到环境中
 
 - 如果是在本地开发使用，可以直接在项目根目录运行`npm link`，这样就能直接在本机使用该 cli 工具了。
 - 如果要在不同电脑或与其他人共享使用，按照发布第三方库的流程将库发布到`npm`上然后使用`npm install 库名 -g`来全局使用。
-
-
 
 ## 总结
 
 本文从零到一搭建了一个能够下载代码模板的脚手架，并尽可能地优化了界面显示。如果你对如何创建一个命令行工具感兴趣或者想要快速生成一个代码模板，可以尝试手动编写一个属于自己的脚手架工具。
 
 相关代码已上传至[github](https://github.com/Col0ring/cotpl-cli)
-
-
 
 ## 参考
 

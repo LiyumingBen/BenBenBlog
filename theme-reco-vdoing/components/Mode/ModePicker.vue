@@ -7,57 +7,59 @@
         :key="index"
         :class="getClass(mode.mode)"
         @click="selectMode(mode.mode)"
-      >{{ mode.title }}</li>
+      >
+        {{ mode.title }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-import applyMode from './applyMode'
+import applyMode from "./applyMode";
 export default {
-  name: 'ModeOptions',
+  name: "ModeOptions",
 
-  data () {
+  data() {
     return {
       modeOptions: [
-        { mode: 'dark', title: '深色模式' },
-        { mode: 'light', title: '浅色模式' },
-        { mode: 'read', title: '阅读模式' }
+        { mode: "dark", title: "深色模式" },
+        { mode: "light", title: "浅色模式" },
+        { mode: "read", title: "阅读模式" },
       ],
-      currentMode: 'light'
-    }
+      currentMode: "light",
+    };
   },
 
-  mounted () {
+  mounted() {
     // modePicker 开启时默认使用用户主动设置的模式
-    this.currentMode = localStorage.getItem('mode') || this.$themeConfig.mode || 'light'
-
+    this.currentMode =
+      localStorage.getItem("mode") || this.$themeConfig.mode || "light";
     // Dark and Light read switches
     // 为了避免在 server-side 被执行，故在 Vue 组件中设置监听器
-    var that = this
-    window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
-      that.$data.currentMode === 'light' && applyMode(that.$data.currentMode)
-    })
-    window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
-      that.$data.currentMode === 'light' && applyMode(that.$data.currentMode)
-    })
+    var that = this;
+    window.matchMedia("(prefers-color-scheme: dark)").addListener(() => {
+      that.$data.currentMode === "light" && applyMode(that.$data.currentMode);
+    });
+    window.matchMedia("(prefers-color-scheme: light)").addListener(() => {
+      that.$data.currentMode === "light" && applyMode(that.$data.currentMode);
+    });
 
-    applyMode(this.currentMode)
+    applyMode(this.currentMode);
   },
 
   methods: {
-    selectMode (mode) {
+    selectMode(mode) {
       if (mode !== this.currentMode) {
-        this.currentMode = mode
-        applyMode(mode)
-        localStorage.setItem('mode', mode)
+        this.currentMode = mode;
+        applyMode(mode);
+        localStorage.setItem("mode", mode);
       }
     },
-    getClass (mode) {
-      return mode !== this.currentMode ? mode : `${mode} active`
-    }
-  }
-}
+    getClass(mode) {
+      return mode !== this.currentMode ? mode : `${mode} active`;
+    },
+  },
+};
 </script>
 
 <style lang="stylus">
